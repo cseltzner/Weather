@@ -2,7 +2,9 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context=".ui.addcity.AddCityFragment">
 
     <TextView
         android:id="@+id/add_city_header"
@@ -28,7 +30,7 @@
         app:layout_constraintTop_toBottomOf="@id/add_city_header" />
 
     <EditText
-        android:id="@+id/add_city_edit_city"
+        android:id="@+id/city_edittext"
         android:layout_width="60pt"
         android:layout_height="wrap_content"
         android:layout_marginStart="24dp"
@@ -40,12 +42,31 @@
         app:layout_constraintTop_toBottomOf="@id/add_city_header_underline" />
 
     <Spinner
-        android:id="@+id/add_city_spinner_state"
+        android:id="@+id/state_spinner"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="24dp"
         android:spinnerMode="dialog"
-        app:layout_constraintStart_toStartOf="@id/add_city_edit_city"
-        app:layout_constraintTop_toBottomOf="@id/add_city_edit_city" />
+        app:layout_constraintStart_toStartOf="@id/city_edittext"
+        app:layout_constraintTop_toBottomOf="@id/city_edittext" />
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/done_fab"
+        android:src="@drawable/ic_done"
+        android:layout_marginEnd="48dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@id/state_spinner" />
+
+    <ProgressBar
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/add_city_progress_bar"
+        android:visibility="gone"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

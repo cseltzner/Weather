@@ -1,4 +1,4 @@
-package com.cseltz.android.weather.model.remote
+package com.cseltz.android.weather.model.remote.remotedataclasses.geocode
 
 import com.google.gson.annotations.SerializedName
 

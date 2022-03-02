@@ -9,11 +9,17 @@ class Repository(
     val openWeatherApi: OpenWeatherApi
 ) {
 
+    // Local database functions
     suspend fun insertStoredCity(city: StoredCity) = storedCityDao.insertStoredCity(city)
     suspend fun deleteStoredCity(city: StoredCity) = storedCityDao.deleteStoredCity(city)
     suspend fun updateStoredCity(city: StoredCity) = storedCityDao.updateStoredCity(city)
-    suspend fun getAllStoredCities() = storedCityDao.getAllStoredCities()
+    fun getAllStoredCities() = storedCityDao.getAllStoredCities()
     suspend fun deleteAllStoredCities() = storedCityDao.deleteAll()
 
+    // Api calls
     fun getCoordinatesByLocationName(locationString: String) = openWeatherApi.getCoordinatesByLocationName(locationString)
+    fun getWeatherByCoordinates(latitude: Double, longitude: Double) = openWeatherApi.getWeather(
+        latitude = latitude,
+        longitude = longitude
+    )
 }

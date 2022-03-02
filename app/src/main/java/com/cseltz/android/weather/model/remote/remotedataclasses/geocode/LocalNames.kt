@@ -1,4 +1,4 @@
-package com.cseltz.android.weather.model.remote
+package com.cseltz.android.weather.model.remote.remotedataclasses.geocode
 
 data class LocalNames(
     val en: String,
