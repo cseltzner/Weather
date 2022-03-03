@@ -1,6 +1,7 @@
 package com.cseltz.android.weather.ui.maincitylist
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -31,7 +32,10 @@ class MainCityListFragment: Fragment(), MainCityListFragmentAdapter.OnClickListe
         binding.mainRecyclerView.setHasFixedSize(true)
 
         viewModel.cityList.observe(viewLifecycleOwner) { cityList ->
-            viewModel.requireUpdatedList()
+            viewModel.getWeatherCityList { list ->
+                Log.d("MainCityListFragment", "WeathercityList ${list.toString()}")
+                adapter.submitList(list)
+            }
         }
 
         binding.mainFabAdd.setOnClickListener {
@@ -52,7 +56,6 @@ class MainCityListFragment: Fragment(), MainCityListFragmentAdapter.OnClickListe
 
                     is MainCityListUiEvents.Success -> {
                         binding.mainProgressBar.isVisible = false
-                        adapter.submitList(event.weatherCityList)
                     }
 
                     is MainCityListUiEvents.NavigateToAddScreen -> {

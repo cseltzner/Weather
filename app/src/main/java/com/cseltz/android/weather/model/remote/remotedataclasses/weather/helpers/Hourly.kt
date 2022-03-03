@@ -8,7 +8,7 @@ import kotlinx.parcelize.Parcelize
 data class Hourly(
     val clouds: Int,
     val dew_point: Double,
-    @SerializedName("dt") val time: Int,
+    @SerializedName("dt") val time: Long,
     val feels_like: Double,
     val humidity: Int,
     val pop: Double, // Probability of precipitation

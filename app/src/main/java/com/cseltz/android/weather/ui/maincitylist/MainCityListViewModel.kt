@@ -3,8 +3,10 @@ package com.cseltz.android.weather.ui.maincitylist
 import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.asLiveData
+import androidx.lifecycle.liveData
 import androidx.lifecycle.viewModelScope
 import com.cseltz.android.weather.model.Repository
+import com.cseltz.android.weather.model.local.StoredCity
 import com.cseltz.android.weather.model.remote.remotedataclasses.weather.WeatherObject
 import com.cseltz.android.weather.ui.uidataclasses.WeatherCity
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -34,6 +36,9 @@ class MainCityListViewModel @Inject constructor(
     * List of all database's stored cities, received as a LiveData for observation by Ui
      */
     val cityList = repository.storedCityDao.getAllStoredCities().asLiveData()
+    private var _cityListCheck = liveData<List<StoredCity>> { /* Nothing */ }
+
+    private val weatherCityList = mutableListOf<WeatherCity>()
 
     fun performEvent(event: MainCityListEvents) {
         when (event) {
@@ -47,9 +52,10 @@ class MainCityListViewModel @Inject constructor(
 
     // Returns list of Ui WeatherCity objects from api
     // Or empty list if the city list is empty
-    fun requireUpdatedList() {
+    private fun retrieveUpdatedList(onSuccess: (List<WeatherCity>) -> Unit) {
+        val weatherCities = mutableListOf<WeatherCity>()
+        var callsCompleted = 0
         viewModelScope.launch {
-            val weatherCityList = mutableListOf<WeatherCity>()
             if (!cityList.value.isNullOrEmpty()) {
                 Log.d(TAG, "Fetching Weathercity...")
                 _uiEvent.send(MainCityListUiEvents.Loading)
@@ -65,7 +71,7 @@ class MainCityListViewModel @Inject constructor(
                         ) {
                             Log.d(TAG, "OnResponse")
                             if (response.isSuccessful && response.body() != null) {
-                                Log.d(TAG, "Response is successful")
+                                Log.d(TAG, "Response is successful ${city.city}")
                                 val weatherObject = response.body()!!
                                 val weatherCity = WeatherCity(
                                     id = city.id,
@@ -73,14 +79,20 @@ class MainCityListViewModel @Inject constructor(
                                     state = city.state,
                                     weatherParameters = weatherObject
                                 )
-                                weatherCityList.add(weatherCity)
+                                weatherCities.add(weatherCity)
                                 Log.d(TAG, "WeatherCity added")
-                                Log.d(TAG, "Current weathercity list $weatherCityList")
-                                viewModelScope.launch {
-                                    Log.d(TAG, "WeatherCityList = ${weatherCityList}")
-                                    _uiEvent.send(MainCityListUiEvents.Success(weatherCityList))
-                                }
+                                callsCompleted++
 
+                                if (callsCompleted == cityList.value!!.size) {
+                                    Log.d(TAG, "Success message sent")
+                                    viewModelScope.launch {
+                                        _cityListCheck = cityList
+                                        weatherCityList.clear()
+                                        weatherCityList.addAll(weatherCities)
+                                        _uiEvent.send(MainCityListUiEvents.Success)
+                                        onSuccess(weatherCityList as List<WeatherCity>)
+                                    }
+                                }
                             }
 
 
@@ -98,7 +110,16 @@ class MainCityListViewModel @Inject constructor(
 
             }
 
+        }
+    }
 
+    // Calls api for most recent list if the database was updated, or viewModel list is empty
+    // Otherwise sends viewModel's list
+    fun getWeatherCityList(onSuccess: (List<WeatherCity>) -> Unit) {
+        if (cityList != _cityListCheck) {
+            retrieveUpdatedList(onSuccess)
+        } else {
+            onSuccess(weatherCityList)
         }
     }
 }
