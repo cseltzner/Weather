@@ -16,7 +16,10 @@ interface StoredCityDao {
     suspend fun updateStoredCity(city: StoredCity)
 
     @Query("SELECT * FROM stored_cities")
-    fun getAllStoredCities(): Flow<List<StoredCity>>
+    fun getAllStoredCitiesAsFlow(): Flow<List<StoredCity>>
+
+    @Query("SELECT * FROM stored_cities")
+    suspend fun getAllStoredCitiesAsList(): List<StoredCity>
 
     @Query("DELETE FROM stored_cities")
     suspend fun deleteAll()

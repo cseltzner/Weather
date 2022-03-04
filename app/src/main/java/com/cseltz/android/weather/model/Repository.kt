@@ -13,7 +13,7 @@ class Repository(
     suspend fun insertStoredCity(city: StoredCity) = storedCityDao.insertStoredCity(city)
     suspend fun deleteStoredCity(city: StoredCity) = storedCityDao.deleteStoredCity(city)
     suspend fun updateStoredCity(city: StoredCity) = storedCityDao.updateStoredCity(city)
-    fun getAllStoredCities() = storedCityDao.getAllStoredCities()
+    fun getAllStoredCities() = storedCityDao.getAllStoredCitiesAsFlow()
     suspend fun deleteAllStoredCities() = storedCityDao.deleteAll()
 
     // Api calls

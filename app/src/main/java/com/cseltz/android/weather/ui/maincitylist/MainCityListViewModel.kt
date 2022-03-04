@@ -3,7 +3,6 @@ package com.cseltz.android.weather.ui.maincitylist
 import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.asLiveData
-import androidx.lifecycle.liveData
 import androidx.lifecycle.viewModelScope
 import com.cseltz.android.weather.model.Repository
 import com.cseltz.android.weather.model.local.StoredCity
@@ -35,8 +34,8 @@ class MainCityListViewModel @Inject constructor(
     /*
     * List of all database's stored cities, received as a LiveData for observation by Ui
      */
-    val cityList = repository.storedCityDao.getAllStoredCities().asLiveData()
-    private var _cityListCheck = liveData<List<StoredCity>> { /* Nothing */ }
+    val cityList = repository.storedCityDao.getAllStoredCitiesAsFlow().asLiveData()
+    private var _cityListCheck = mutableListOf<StoredCity>()
 
     private val weatherCityList = mutableListOf<WeatherCity>()
 
@@ -86,7 +85,8 @@ class MainCityListViewModel @Inject constructor(
                                 if (callsCompleted == cityList.value!!.size) {
                                     Log.d(TAG, "Success message sent")
                                     viewModelScope.launch {
-                                        _cityListCheck = cityList
+                                        _cityListCheck.clear()
+                                        _cityListCheck.addAll(cityList.value!!)
                                         weatherCityList.clear()
                                         weatherCityList.addAll(weatherCities)
                                         _uiEvent.send(MainCityListUiEvents.Success)
@@ -116,9 +116,11 @@ class MainCityListViewModel @Inject constructor(
     // Calls api for most recent list if the database was updated, or viewModel list is empty
     // Otherwise sends viewModel's list
     fun getWeatherCityList(onSuccess: (List<WeatherCity>) -> Unit) {
-        if (cityList != _cityListCheck) {
+        if (cityList.value != _cityListCheck as List<StoredCity>) {
+            Log.d(TAG, "Getting new city list")
             retrieveUpdatedList(onSuccess)
         } else {
+            Log.d(TAG, "Not getting new citylist")
             onSuccess(weatherCityList)
         }
     }

@@ -11,6 +11,7 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import com.cseltz.android.weather.databinding.FragmentMainCityListBinding
+import com.cseltz.android.weather.ui.uidataclasses.WeatherCity
 import com.google.android.material.snackbar.Snackbar
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.*
@@ -33,8 +34,11 @@ class MainCityListFragment: Fragment(), MainCityListFragmentAdapter.OnClickListe
 
         viewModel.cityList.observe(viewLifecycleOwner) { cityList ->
             viewModel.getWeatherCityList { list ->
-                Log.d("MainCityListFragment", "WeathercityList ${list.toString()}")
-                adapter.submitList(list)
+                Log.d("MainCityListFragment", "Submitting list with ${list.size} items")
+                adapter.apply {
+                    submitList(null) // Needed because submitList needs a new reference to call for updates
+                    submitList(list)
+                }
             }
         }
 
