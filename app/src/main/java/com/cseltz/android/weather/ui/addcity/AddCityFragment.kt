@@ -1,11 +1,14 @@
 package com.cseltz.android.weather.ui.addcity
 
+import android.app.Activity
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.inputmethod.EditorInfo
+import android.view.inputmethod.InputMethodManager
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import androidx.core.view.isVisible
@@ -58,6 +61,20 @@ class AddCityFragment: Fragment(), AdapterView.OnItemSelectedListener {
             }
         })
         binding.cityEdittext.setText(viewModel.cityEditTextValue)
+        // Performs action on done button
+        // Refactor this into its own functions later
+        binding.cityEdittext.setOnEditorActionListener { textView, actionId, keyEvent ->
+          if (actionId == EditorInfo.IME_ACTION_DONE) {
+              if (viewModel.validateCity(viewModel.cityEditTextValue, viewModel.currentStateSpinnerPosition)) {
+                  val state = StateIdToStateCodeConverter.convertStateSpinnerPositionToStateCode(viewModel.currentStateSpinnerPosition)
+                  viewModel.performEvent(AddCityEvents.OnCompletedFabClick(viewModel.cityEditTextValue, state))
+              } else {
+                  Snackbar.make(binding.root, "Please enter a city", Snackbar.LENGTH_SHORT).show()
+              }
+
+          }
+            false
+        }
 
         binding.doneFab.setOnClickListener {
             if (viewModel.validateCity(viewModel.cityEditTextValue, viewModel.currentStateSpinnerPosition)) {
