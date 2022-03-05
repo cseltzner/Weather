@@ -7,4 +7,5 @@ sealed class MainCityListUiEvents {
     object Success: MainCityListUiEvents()
     data class Failure(val message: String): MainCityListUiEvents()
     object NavigateToAddScreen: MainCityListUiEvents()
+    object UpdateRefreshTime: MainCityListUiEvents()
 }

@@ -115,7 +115,8 @@ class MainCityListViewModel @Inject constructor(
                                         weatherCityList.clear()
                                         weatherCityList.addAll(weatherCities)
                                         _uiEvent.send(MainCityListUiEvents.Success)
-                                        onSuccess(weatherCityList as List<WeatherCity>)
+                                        _uiEvent.send(MainCityListUiEvents.UpdateRefreshTime)
+                                        onSuccess(weatherCityList as List<WeatherCity>) // Maybe send as event?
                                     }
                                 }
                             }

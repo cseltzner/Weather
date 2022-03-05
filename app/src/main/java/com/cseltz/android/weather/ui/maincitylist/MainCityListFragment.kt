@@ -11,10 +11,11 @@ import androidx.navigation.fragment.findNavController
 import com.cseltz.android.weather.NavGraphDirections
 import com.cseltz.android.weather.R
 import com.cseltz.android.weather.databinding.FragmentMainCityListBinding
-import com.cseltz.android.weather.ui.uidataclasses.WeatherCity
 import com.google.android.material.snackbar.Snackbar
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.*
+import java.text.SimpleDateFormat
+import java.util.*
 
 @AndroidEntryPoint
 class MainCityListFragment: Fragment(), MainCityListFragmentAdapter.OnItemClickListeners {
@@ -65,6 +66,10 @@ class MainCityListFragment: Fragment(), MainCityListFragmentAdapter.OnItemClickL
                         findNavController().navigate(action)
                     }
 
+                    is MainCityListUiEvents.UpdateRefreshTime -> {
+                        binding.mainTimeLastUpdatedTextview.text = "Last updated: ${getFormattedTime()}"
+                    }
+
                 }
             }
         }
@@ -100,5 +105,10 @@ class MainCityListFragment: Fragment(), MainCityListFragmentAdapter.OnItemClickL
 
             else -> { false }
         }
+    }
+
+    private fun getFormattedTime(): String {
+        val formatter = SimpleDateFormat("EEE, MMM d hh:mm aaa", Locale.US)
+        return formatter.format(Date())
     }
 }
