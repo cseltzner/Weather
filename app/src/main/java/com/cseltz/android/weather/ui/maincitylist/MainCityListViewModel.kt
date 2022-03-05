@@ -34,7 +34,7 @@ class MainCityListViewModel @Inject constructor(
     /*
     * List of all database's stored cities, received as a LiveData for observation by Ui
      */
-    val cityList = repository.storedCityDao.getAllStoredCitiesAsFlow().asLiveData()
+    val cityList = repository.getAllStoredCitiesAsLiveData()
     private var _cityListCheck = mutableListOf<StoredCity>()
 
     private val weatherCityList = mutableListOf<WeatherCity>()
@@ -46,10 +46,35 @@ class MainCityListViewModel @Inject constructor(
                     _uiEvent.send(MainCityListUiEvents.NavigateToAddScreen)
                 }
             }
+
+            is MainCityListEvents.OnRefreshClicked -> {
+                retrieveUpdatedList(event.callback)
+            }
+
+            is MainCityListEvents.OnDeleteAllClicked -> {
+                viewModelScope.launch {
+                    repository.deleteAllStoredCities()
+                    weatherCityList.clear()
+                    Log.d(TAG, "Deleted all")
+                }
+            }
         }
     }
 
-    // Returns list of Ui WeatherCity objects from api
+    // Calls api for most recent list if the database was updated, or viewModel list is empty
+    // Otherwise sends viewModel's list
+    fun getWeatherCityList(onSuccess: (List<WeatherCity>) -> Unit) {
+        if (cityList.value != _cityListCheck as List<StoredCity>) {
+            Log.d(TAG, "Getting new city list")
+            retrieveUpdatedList(onSuccess)
+        } else {
+            Log.d(TAG, "Not getting new citylist")
+            onSuccess(weatherCityList)
+        }
+    }
+
+
+    // Performs callback with list of Ui WeatherCity objects from api
     // Or empty list if the city list is empty
     private fun retrieveUpdatedList(onSuccess: (List<WeatherCity>) -> Unit) {
         val weatherCities = mutableListOf<WeatherCity>()
@@ -62,7 +87,7 @@ class MainCityListViewModel @Inject constructor(
                     val lat = city.latitude
                     val lon = city.longitude
                     Log.d(TAG, "Latitude: $lat, Longitude: $lon")
-                    val weatherObjectCall = repository.openWeatherApi.getWeather(lat, lon)
+                    val weatherObjectCall = repository.getWeatherByCoordinates(lat, lon)
                     weatherObjectCall.enqueue(object : Callback<WeatherObject> {
                         override fun onResponse(
                             call: Call<WeatherObject>,
@@ -108,20 +133,11 @@ class MainCityListViewModel @Inject constructor(
                     })
                 }
 
+            } else {
+                Log.d(TAG, "Performing onSuccess with empty list")
+                onSuccess(listOf())
             }
 
-        }
-    }
-
-    // Calls api for most recent list if the database was updated, or viewModel list is empty
-    // Otherwise sends viewModel's list
-    fun getWeatherCityList(onSuccess: (List<WeatherCity>) -> Unit) {
-        if (cityList.value != _cityListCheck as List<StoredCity>) {
-            Log.d(TAG, "Getting new city list")
-            retrieveUpdatedList(onSuccess)
-        } else {
-            Log.d(TAG, "Not getting new citylist")
-            onSuccess(weatherCityList)
         }
     }
 }

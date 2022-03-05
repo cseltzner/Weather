@@ -23,4 +23,17 @@
         android:name="com.cseltz.android.weather.ui.addcity.AddCityFragment"
         android:label="Add"
         tools:layout="@layout/fragment_add_city" />
+    <fragment
+        android:id="@+id/aboutFragment2"
+        android:name="com.cseltz.android.weather.ui.AboutFragment"
+        android:label="About"
+        tools:layout="@layout/fragment_about" />
+    <action
+        android:id="@+id/action_global_aboutFragment2"
+        app:destination="@id/aboutFragment2"
+        app:enterAnim="@anim/nav_default_enter_anim"
+        app:exitAnim="@anim/nav_default_exit_anim"
+        app:launchSingleTop="true"
+        app:popEnterAnim="@anim/nav_default_pop_enter_anim"
+        app:popExitAnim="@anim/nav_default_pop_exit_anim" />
 </navigation>

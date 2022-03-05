@@ -35,7 +35,7 @@ class AddCityViewModel @Inject constructor(
             is AddCityEvents.OnCompletedFabClick -> {
                 viewModelScope.launch {
 
-                    val dbCityList = repository.storedCityDao.getAllStoredCitiesAsList()
+                    val dbCityList = repository.getAllStoredCitiesAsList()
                     var shouldContinue = true
                     Log.d(TAG, "Checking db citylist...")
                     Log.d(TAG, "db city list contents: ${dbCityList.toString()}")
@@ -52,7 +52,7 @@ class AddCityViewModel @Inject constructor(
 
                     if (shouldContinue) {
                         _uiEvent.send(AddCityUiEvents.Loading)
-                        val apiCall = repository.openWeatherApi.getCoordinatesByLocationName(
+                        val apiCall = repository.getCoordinatesByLocationName(
                             getLocationString(
                                 event.city,
                                 event.state
@@ -111,7 +111,7 @@ class AddCityViewModel @Inject constructor(
             longitude = city.longitude
         )
         viewModelScope.launch {
-            repository.storedCityDao.insertStoredCity(cityToStore)
+            repository.insertStoredCity(cityToStore)
         }
     }
 

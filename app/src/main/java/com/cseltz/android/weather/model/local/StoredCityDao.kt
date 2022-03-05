@@ -1,5 +1,6 @@
 package com.cseltz.android.weather.model.local
 
+import androidx.lifecycle.LiveData
 import androidx.room.*
 import kotlinx.coroutines.flow.Flow
 
@@ -17,6 +18,9 @@ interface StoredCityDao {
 
     @Query("SELECT * FROM stored_cities")
     fun getAllStoredCitiesAsFlow(): Flow<List<StoredCity>>
+
+    @Query("SELECT * FROM stored_cities")
+    fun getAllStoredCitiesAsLiveData(): LiveData<List<StoredCity>>
 
     @Query("SELECT * FROM stored_cities")
     suspend fun getAllStoredCitiesAsList(): List<StoredCity>
