@@ -3,7 +3,6 @@ package com.cseltz.android.weather.ui.maincitylist
 import android.os.Bundle
 import android.util.Log
 import android.view.*
-import android.widget.Toast
 import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
@@ -18,7 +17,7 @@ import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.*
 
 @AndroidEntryPoint
-class MainCityListFragment: Fragment(), MainCityListFragmentAdapter.OnClickListeners {
+class MainCityListFragment: Fragment(), MainCityListFragmentAdapter.OnItemClickListeners {
 
     private lateinit var binding: FragmentMainCityListBinding
     private val viewModel: MainCityListViewModel by viewModels()
@@ -30,16 +29,14 @@ class MainCityListFragment: Fragment(), MainCityListFragmentAdapter.OnClickListe
         savedInstanceState: Bundle?
     ): View? {
         binding = FragmentMainCityListBinding.inflate(inflater)
-        adapter = MainCityListFragmentAdapter(this)
+        adapter = MainCityListFragmentAdapter(listOf(), this)
         binding.mainRecyclerView.adapter = adapter
         binding.mainRecyclerView.setHasFixedSize(true)
 
         viewModel.cityList.observe(viewLifecycleOwner) {
             viewModel.getWeatherCityList { list ->
                 Log.d("MainCityListFragment", "Submitting list with ${list.size} items")
-                val newList = mutableListOf<WeatherCity>()
-                newList.addAll(list)
-                adapter.submitList(newList) // Must send a list with a different reference, or else listAdapter bugs out
+                adapter.submitList(list)
             }
         }
 
@@ -96,7 +93,6 @@ class MainCityListFragment: Fragment(), MainCityListFragmentAdapter.OnClickListe
             }
             R.id.menu_main_refresh -> {
                 viewModel.performEvent(MainCityListEvents.OnRefreshClicked { list ->
-                    adapter.submitList(null)
                     adapter.submitList(list)
                 })
                 true
