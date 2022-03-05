@@ -18,13 +18,15 @@
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_marginStart="8dp"
-            android:breakStrategy="high_quality"
+            android:autoSizeTextType="uniform"
+            android:autoSizeMaxTextSize="20sp"
+            android:maxLines="1"
             android:gravity="center"
             android:textSize="20sp"
             app:layout_constraintEnd_toStartOf="@id/list_item_temp"
             app:layout_constraintHorizontal_weight="2"
             app:layout_constraintStart_toStartOf="parent"
-            tools:text="City Name" />
+            tools:text="Madison" />
 
         <TextView
             android:id="@+id/list_item_temp"
