@@ -24,7 +24,7 @@
             android:gravity="center"
             android:textSize="20sp"
             app:layout_constraintEnd_toStartOf="@id/list_item_temp"
-            app:layout_constraintHorizontal_weight="2"
+            app:layout_constraintHorizontal_weight="4"
             app:layout_constraintStart_toStartOf="parent"
             tools:text="Madison" />
 
@@ -35,9 +35,9 @@
             android:gravity="center"
             android:textSize="20sp"
             app:layout_constraintEnd_toStartOf="@id/list_item_icon"
-            app:layout_constraintHorizontal_weight="1"
+            app:layout_constraintHorizontal_weight="3"
             app:layout_constraintStart_toEndOf="@id/list_item_city_name"
-            tools:text="48F/\n32F" />
+            tools:text="48 F" />
 
 
         <ImageView
@@ -45,7 +45,7 @@
             android:layout_width="0dp"
             android:layout_height="match_parent"
             app:layout_constraintEnd_toStartOf="@id/list_item_description"
-            app:layout_constraintHorizontal_weight="1"
+            app:layout_constraintHorizontal_weight="2"
             app:layout_constraintStart_toEndOf="@id/list_item_temp"
             tools:src="@drawable/sunny" />
 
@@ -58,7 +58,7 @@
             android:gravity="center"
             android:textSize="20sp"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_weight="3"
+            app:layout_constraintHorizontal_weight="6"
             app:layout_constraintStart_toEndOf="@id/list_item_icon"
             tools:text="Partly cloudy" />
 

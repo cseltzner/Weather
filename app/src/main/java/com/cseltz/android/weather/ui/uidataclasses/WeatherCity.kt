@@ -39,7 +39,67 @@ data class WeatherCity(
 
     fun getCurrentFormattedTemperature(): String {
         val temp = weatherParameters.current.temp
+        val formattedTemp = temp.toInt()
+        return "${formattedTemp} F"
+    }
+
+    fun getCurrentFormattedFeelsLikeTemp(): String {
+        val temp = weatherParameters.current.feels_like
         val formattedTemp = Math.round(temp * 10.0) / 10.0
-        return "${formattedTemp}F"
+        return "Feels like ${formattedTemp} F"
+    }
+
+    fun getCurrentFormattedWindString(): String {
+        val windSpeed = weatherParameters.current.wind_speed
+        val windDeg = weatherParameters.current.wind_deg
+
+        val windDir =
+            if ((windDeg in 0..21) || (windDeg in 338..360)) {
+                "North"
+            } else if (windDeg in 22..68) {
+                "NE"
+            } else if (windDeg in 69..113) {
+                "East"
+            } else if (windDeg in 114..158) {
+                "SE"
+            } else if (windDeg in 159..203) {
+                "South"
+            } else if (windDeg in 204..248) {
+                "SW"
+            } else if (windDeg in 249..293) {
+                "West"
+            } else if (windDeg in 294..337) {
+                "NW"
+            }
+            else {
+                ""
+            }
+
+        return "$windSpeed MPH ${getCurrentWindClassifier().str} $windDir"
+    }
+
+    fun getCurrentWindIcon(): Int {
+        return getCurrentWindClassifier().imgResource
+    }
+
+    private fun getCurrentWindClassifier(): WindClassifiers {
+        val windSpeed = weatherParameters.current.wind_speed
+        return if (windSpeed >= 0 && windSpeed < 4) {
+            WindClassifiers.LightBreeze
+        } else if (windSpeed >= 4 && windSpeed < 13) {
+            WindClassifiers.Breeze
+        } else if (windSpeed >= 13 && windSpeed < 30) {
+            WindClassifiers.Wind
+        }
+        else {
+            WindClassifiers.StrongWind
+        }
+    }
+
+    private sealed class WindClassifiers(val str: String, val imgResource: Int) {
+        object LightBreeze: WindClassifiers("light breeze", R.drawable.no_wind)
+        object Breeze: WindClassifiers("breeze", R.drawable.light_breeze)
+        object Wind: WindClassifiers("wind", R.drawable.breeze)
+        object StrongWind: WindClassifiers("strong wind", R.drawable.strong_wind)
     }
 }

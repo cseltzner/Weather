@@ -4,6 +4,6 @@ import android.os.Parcelable
 import kotlinx.parcelize.Parcelize
 
 @Parcelize
-data class Snow(
-    val `1h`: Double? = 0.0
+data class Rain(
+    val `1h` : Double? = 0.0
 ): Parcelable

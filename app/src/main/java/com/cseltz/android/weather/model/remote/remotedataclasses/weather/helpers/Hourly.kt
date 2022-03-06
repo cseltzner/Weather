@@ -13,12 +13,13 @@ data class Hourly(
     val humidity: Int,
     val pop: Double, // Probability of precipitation
     val pressure: Int,
-    val snow: Snow,
+    val snow: Snow? = Snow(),
     val temp: Double,
     val uvi: Double,
     val visibility: Int,
+    val rain: Rain? = Rain(),
     val weather: List<HourlyWeather>,
     val wind_deg: Int,
-    val wind_gust: Double,
+    val wind_gust: Double? = 0.0,
     val wind_speed: Double
 ): Parcelable

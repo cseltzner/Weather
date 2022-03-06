@@ -16,14 +16,14 @@ data class Daily(
     val moonset: Long,
     val pop: Double, // Probability of precipitation
     val pressure: Int,
-    val rain: Double,
-    val snow: Double,
+    val rain: Double? = 0.0,
+    val snow: Double? = 0.0,
     val sunrise: Long,
     val sunset: Long,
     val temp: Temp,
     val uvi: Double,
     val weather: List<DailyWeather>,
     val wind_deg: Int,
-    val wind_gust: Double,
+    val wind_gust: Double? = 0.0,
     val wind_speed: Double
 ): Parcelable

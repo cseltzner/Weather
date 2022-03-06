@@ -17,6 +17,9 @@
             app:exitAnim="@anim/nav_default_exit_anim"
             app:popEnterAnim="@anim/nav_default_pop_enter_anim"
             app:popExitAnim="@anim/nav_default_pop_exit_anim" />
+        <action
+            android:id="@+id/action_mainCityListFragment_to_singleCityFragment3"
+            app:destination="@id/singleCityFragment3" />
     </fragment>
     <fragment
         android:id="@+id/addCityFragment"
@@ -36,4 +39,12 @@
         app:launchSingleTop="true"
         app:popEnterAnim="@anim/nav_default_pop_enter_anim"
         app:popExitAnim="@anim/nav_default_pop_exit_anim" />
+    <fragment
+        android:id="@+id/singleCityFragment3"
+        android:name="com.cseltz.android.weather.ui.singlecity.SingleCityFragment"
+        android:label="Local Weather" >
+        <argument
+            android:name="weatherCity"
+            app:argType="com.cseltz.android.weather.ui.uidataclasses.WeatherCity" />
+    </fragment>
 </navigation>

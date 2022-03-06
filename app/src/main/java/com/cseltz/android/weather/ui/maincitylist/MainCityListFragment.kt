@@ -11,6 +11,7 @@ import androidx.navigation.fragment.findNavController
 import com.cseltz.android.weather.NavGraphDirections
 import com.cseltz.android.weather.R
 import com.cseltz.android.weather.databinding.FragmentMainCityListBinding
+import com.cseltz.android.weather.ui.uidataclasses.WeatherCity
 import com.google.android.material.snackbar.Snackbar
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.*
@@ -105,6 +106,11 @@ class MainCityListFragment: Fragment(), MainCityListFragmentAdapter.OnItemClickL
 
             else -> { false }
         }
+    }
+
+    override fun onClick(weatherCity: WeatherCity) {
+        val action = MainCityListFragmentDirections.actionMainCityListFragmentToSingleCityFragment3(weatherCity)
+        findNavController().navigate(action)
     }
 
     private fun getFormattedTime(): String {

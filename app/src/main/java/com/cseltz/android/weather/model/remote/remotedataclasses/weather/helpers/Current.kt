@@ -17,6 +17,9 @@ data class Current(
     val temp: Double,
     val uvi: Double,
     val visibility: Int,
+    val rain: Rain? = Rain(),
+    val snow: Snow? = Snow(),
+    val wind_gust: Double? = 0.0,
     val weather: List<CurrentWeather>,
     val wind_deg: Int,
     val wind_speed: Double
