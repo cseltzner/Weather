@@ -34,7 +34,7 @@ class DeleteCityDialog : DialogFragment() {
         }
 
         binding.deleteCityCancel.setOnClickListener {
-            // Just checking... TODO findNavController().popBackStack()
+            findNavController().popBackStack()
         }
     }
 
