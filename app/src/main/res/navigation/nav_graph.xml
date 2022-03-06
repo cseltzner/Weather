@@ -41,8 +41,7 @@
         app:popExitAnim="@anim/nav_default_pop_exit_anim" />
     <fragment
         android:id="@+id/singleCityFragment3"
-        android:name="com.cseltz.android.weather.ui.singlecity.SingleCityFragment"
-        android:label="Local Weather" >
+        android:name="com.cseltz.android.weather.ui.singlecity.SingleCityFragment" >
         <argument
             android:name="weatherCity"
             app:argType="com.cseltz.android.weather.ui.uidataclasses.WeatherCity" />
