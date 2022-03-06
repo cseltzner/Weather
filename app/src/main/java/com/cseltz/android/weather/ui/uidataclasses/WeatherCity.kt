@@ -45,7 +45,7 @@ data class WeatherCity(
 
     fun getCurrentFormattedFeelsLikeTemp(): String {
         val temp = weatherParameters.current.feels_like
-        val formattedTemp = Math.round(temp * 10.0) / 10.0
+        val formattedTemp = temp.toInt()
         return "Feels like ${formattedTemp} F"
     }
 
@@ -75,7 +75,7 @@ data class WeatherCity(
                 ""
             }
 
-        return "$windSpeed MPH ${getCurrentWindClassifier().str} $windDir"
+        return "${windSpeed.toInt()} MPH ${getCurrentWindClassifier().str} $windDir"
     }
 
     fun getCurrentWindIcon(): Int {

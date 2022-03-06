@@ -4,15 +4,19 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.os.bundleOf
 import androidx.fragment.app.Fragment
 import com.cseltz.android.weather.databinding.FragmentCurrentWeatherBinding
+import com.cseltz.android.weather.ui.singlecity.CURRENT_WEATHER_KEY
+import com.cseltz.android.weather.ui.singlecity.SingleCityAdapter
 import com.cseltz.android.weather.ui.uidataclasses.WeatherCity
 import java.text.SimpleDateFormat
 import java.util.*
 
-class CurrentWeatherFragment(private val weatherCity: WeatherCity): Fragment() {
+class CurrentWeatherFragment: Fragment() {
 
     private lateinit var binding: FragmentCurrentWeatherBinding
+    private lateinit var weatherCity: WeatherCity
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -20,6 +24,8 @@ class CurrentWeatherFragment(private val weatherCity: WeatherCity): Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         binding = FragmentCurrentWeatherBinding.inflate(inflater)
+
+        weatherCity = arguments?.getParcelable(CURRENT_WEATHER_KEY)!!
 
         binding.apply {
             timeTextview.text = getFormattedTime()

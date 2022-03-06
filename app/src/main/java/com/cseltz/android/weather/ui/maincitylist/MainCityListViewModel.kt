@@ -15,6 +15,8 @@ import kotlinx.coroutines.launch
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
+import java.text.SimpleDateFormat
+import java.util.*
 import javax.inject.Inject
 
 private const val TAG = "MainCityListViewModel"
@@ -38,6 +40,8 @@ class MainCityListViewModel @Inject constructor(
     private var _cityListCheck = mutableListOf<StoredCity>()
 
     private val weatherCityList = mutableListOf<WeatherCity>()
+
+    var lastUpdatedTime = ""
 
     fun performEvent(event: MainCityListEvents) {
         when (event) {
@@ -71,6 +75,13 @@ class MainCityListViewModel @Inject constructor(
             Log.d(TAG, "Not getting new citylist")
             onSuccess(weatherCityList)
         }
+    }
+
+    fun getUpdatedTime(): String {
+        val formatter = SimpleDateFormat("EEE, MMM d hh:mm aaa", Locale.US)
+        val time = formatter.format(Date())
+        lastUpdatedTime = time
+        return time
     }
 
 
@@ -141,4 +152,9 @@ class MainCityListViewModel @Inject constructor(
 
         }
     }
+    private fun getFormattedTime(): String {
+        val formatter = SimpleDateFormat("EEE, MMM d hh:mm aaa", Locale.US)
+        return formatter.format(Date())
+    }
+
 }

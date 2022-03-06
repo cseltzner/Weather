@@ -35,6 +35,11 @@ class MainCityListFragment: Fragment(), MainCityListFragmentAdapter.OnItemClickL
         binding.mainRecyclerView.adapter = adapter
         binding.mainRecyclerView.setHasFixedSize(true)
 
+        binding.mainTimeLastUpdatedTextview.text = when(viewModel.lastUpdatedTime) {
+            "" -> ""
+            else -> "Last updated: ${viewModel.lastUpdatedTime}"
+        }
+
         viewModel.cityList.observe(viewLifecycleOwner) {
             viewModel.getWeatherCityList { list ->
                 Log.d("MainCityListFragment", "Submitting list with ${list.size} items")
@@ -68,7 +73,7 @@ class MainCityListFragment: Fragment(), MainCityListFragmentAdapter.OnItemClickL
                     }
 
                     is MainCityListUiEvents.UpdateRefreshTime -> {
-                        binding.mainTimeLastUpdatedTextview.text = "Last updated: ${getFormattedTime()}"
+                        binding.mainTimeLastUpdatedTextview.text = "Last updated: ${viewModel.getUpdatedTime()}"
                     }
 
                 }
@@ -113,8 +118,4 @@ class MainCityListFragment: Fragment(), MainCityListFragmentAdapter.OnItemClickL
         findNavController().navigate(action)
     }
 
-    private fun getFormattedTime(): String {
-        val formatter = SimpleDateFormat("EEE, MMM d hh:mm aaa", Locale.US)
-        return formatter.format(Date())
-    }
 }
