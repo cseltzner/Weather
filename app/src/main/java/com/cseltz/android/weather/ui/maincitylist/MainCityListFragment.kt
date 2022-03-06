@@ -5,6 +5,7 @@ import android.util.Log
 import android.view.*
 import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
@@ -22,7 +23,7 @@ import java.util.*
 class MainCityListFragment: Fragment(), MainCityListFragmentAdapter.OnItemClickListeners {
 
     private lateinit var binding: FragmentMainCityListBinding
-    private val viewModel: MainCityListViewModel by viewModels()
+    private val viewModel: MainCityListViewModel by activityViewModels()
     private lateinit var adapter: MainCityListFragmentAdapter
 
     override fun onCreateView(
@@ -74,6 +75,15 @@ class MainCityListFragment: Fragment(), MainCityListFragmentAdapter.OnItemClickL
 
                     is MainCityListUiEvents.UpdateRefreshTime -> {
                         binding.mainTimeLastUpdatedTextview.text = "Last updated: ${viewModel.getUpdatedTime()}"
+                    }
+
+                    is MainCityListUiEvents.NavigateToDeleteAllDialog -> {
+                        val action = MainCityListFragmentDirections.actionMainCityListFragmentToDeleteAllDialog()
+                        findNavController().navigate(action)
+                    }
+
+                    is MainCityListUiEvents.DeleteAllSuccess -> {
+                        binding.mainTimeLastUpdatedTextview.text = ""
                     }
 
                 }

@@ -6,4 +6,5 @@ sealed class MainCityListEvents {
     object OnAddFabClicked: MainCityListEvents()
     data class OnRefreshClicked(val callback: (List<WeatherCity>) -> Unit): MainCityListEvents()
     object OnDeleteAllClicked: MainCityListEvents()
+    object OnDeleteAllConfirmed: MainCityListEvents()
 }

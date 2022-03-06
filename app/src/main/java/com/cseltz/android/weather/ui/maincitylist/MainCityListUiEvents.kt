@@ -8,4 +8,6 @@ sealed class MainCityListUiEvents {
     data class Failure(val message: String): MainCityListUiEvents()
     object NavigateToAddScreen: MainCityListUiEvents()
     object UpdateRefreshTime: MainCityListUiEvents()
+    object NavigateToDeleteAllDialog: MainCityListUiEvents()
+    object DeleteAllSuccess: MainCityListUiEvents()
 }

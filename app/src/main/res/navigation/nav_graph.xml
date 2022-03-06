@@ -19,7 +19,14 @@
             app:popExitAnim="@anim/nav_default_pop_exit_anim" />
         <action
             android:id="@+id/action_mainCityListFragment_to_singleCityFragment3"
-            app:destination="@id/singleCityFragment3" />
+            app:destination="@id/singleCityFragment3"
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:exitAnim="@anim/nav_default_exit_anim"
+            app:popEnterAnim="@anim/nav_default_pop_enter_anim"
+            app:popExitAnim="@anim/nav_default_pop_exit_anim" />
+        <action
+            android:id="@+id/action_mainCityListFragment_to_deleteAllDialog"
+            app:destination="@id/deleteAllDialog" />
     </fragment>
     <fragment
         android:id="@+id/addCityFragment"
@@ -46,4 +53,8 @@
             android:name="weatherCity"
             app:argType="com.cseltz.android.weather.ui.uidataclasses.WeatherCity" />
     </fragment>
+    <dialog
+        android:id="@+id/deleteAllDialog"
+        android:name="com.cseltz.android.weather.ui.maincitylist.DeleteAllDialog"
+        android:label="DeleteAllDialog" />
 </navigation>

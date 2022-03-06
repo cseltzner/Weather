@@ -57,9 +57,17 @@ class MainCityListViewModel @Inject constructor(
 
             is MainCityListEvents.OnDeleteAllClicked -> {
                 viewModelScope.launch {
+                    _uiEvent.send(MainCityListUiEvents.NavigateToDeleteAllDialog)
+                }
+            }
+
+            is MainCityListEvents.OnDeleteAllConfirmed -> {
+                viewModelScope.launch {
                     repository.deleteAllStoredCities()
                     weatherCityList.clear()
                     Log.d(TAG, "Deleted all")
+                    _uiEvent.send(MainCityListUiEvents.DeleteAllSuccess)
+                    lastUpdatedTime = ""
                 }
             }
         }

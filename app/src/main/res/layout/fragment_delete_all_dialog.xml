@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_margin="16dp"
+    app:cardBackgroundColor="#E4FAFAFA"
+    app:cardCornerRadius="8dp"
+    app:cardElevation="2dp"
+    tools:context="ui.maincitylist.DeleteAllDialog">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding="12dp">
+
+        <ImageView
+            android:id="@+id/delete_all_warning_icon"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="16dp"
+            android:scaleX="1.2"
+            android:scaleY="1.2"
+            android:src="@drawable/ic_danger"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/delete_all_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="32dp"
+            android:text="@string/delete_all_dialog_title"
+            android:textColor="#E60707"
+            android:textSize="20sp"
+            app:layout_constraintBottom_toBottomOf="@id/delete_all_warning_icon"
+            app:layout_constraintStart_toEndOf="@id/delete_all_warning_icon"
+            app:layout_constraintTop_toTopOf="@id/delete_all_warning_icon" />
+
+        <View
+            android:id="@+id/delete_all_underline"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="8dp"
+            android:background="#48000000"
+            app:layout_constraintTop_toBottomOf="@id/delete_all_warning_icon" />
+
+        <TextView
+            android:id="@+id/delete_all_message"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:padding="16dp"
+            android:text="@string/delete_all_dialog_message"
+            android:textColor="@color/black"
+            android:textSize="16sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/delete_all_underline" />
+
+        <TextView
+            android:id="@+id/delete_all_cancel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:clickable="true"
+            android:focusable="true"
+            android:padding="16dp"
+            android:text="@string/delete_all_dialog_cancel"
+            android:textColor="@color/black"
+            android:textSize="16sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/delete_all_message" />
+
+        <TextView
+            android:id="@+id/delete_all_confirm"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:clickable="true"
+            android:focusable="true"
+            android:padding="16dp"
+            android:text="@string/delete_all_dialog_confirm"
+            android:textColor="#E60707"
+            android:textSize="16sp"
+            app:layout_constraintEnd_toStartOf="@id/delete_all_cancel"
+            app:layout_constraintTop_toTopOf="@id/delete_all_cancel" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.cardview.widget.CardView>

@@ -9,4 +9,8 @@
     <string name="about_body">This application was created to practice MVVM structure, API calls, basic database operations, Kotlin coroutines, dependency injection, and Navigation component.</string>
     <string name="weather_icon">Weather Icon</string>
     <string name="wind_icon">Wind Icon</string>
+    <string name="delete_all_dialog_title">Confirm Deletion</string>
+    <string name="delete_all_dialog_message">Are you sure you want to delete all currently stored cities?</string>
+    <string name="delete_all_dialog_cancel">Cancel</string>
+    <string name="delete_all_dialog_confirm">Delete All</string>
 </resources>
