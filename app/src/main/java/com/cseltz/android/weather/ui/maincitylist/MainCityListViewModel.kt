@@ -70,6 +70,13 @@ class MainCityListViewModel @Inject constructor(
                     lastUpdatedTime = ""
                 }
             }
+
+            is MainCityListEvents.OnDeleteCityClicked -> {
+                viewModelScope.launch {
+                    repository.deleteStoredCityById(event.city.id)
+                    weatherCityList.remove(event.city)
+                }
+            }
         }
     }
 

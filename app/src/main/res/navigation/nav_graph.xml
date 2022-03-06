@@ -27,6 +27,9 @@
         <action
             android:id="@+id/action_mainCityListFragment_to_deleteAllDialog"
             app:destination="@id/deleteAllDialog" />
+        <action
+            android:id="@+id/action_mainCityListFragment_to_deleteCityDialog"
+            app:destination="@id/deleteCityDialog" />
     </fragment>
     <fragment
         android:id="@+id/addCityFragment"
@@ -57,4 +60,12 @@
         android:id="@+id/deleteAllDialog"
         android:name="com.cseltz.android.weather.ui.maincitylist.DeleteAllDialog"
         android:label="DeleteAllDialog" />
+    <dialog
+        android:id="@+id/deleteCityDialog"
+        android:name="com.cseltz.android.weather.ui.maincitylist.DeleteCityDialog"
+        android:label="DeleteCityDialog" >
+        <argument
+            android:name="weatherCity"
+            app:argType="com.cseltz.android.weather.ui.uidataclasses.WeatherCity" />
+    </dialog>
 </navigation>

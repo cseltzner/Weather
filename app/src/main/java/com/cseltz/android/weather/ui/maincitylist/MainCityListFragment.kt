@@ -123,8 +123,14 @@ class MainCityListFragment: Fragment(), MainCityListFragmentAdapter.OnItemClickL
         }
     }
 
+    // Custom RecyclerView interface methods
     override fun onClick(weatherCity: WeatherCity) {
         val action = MainCityListFragmentDirections.actionMainCityListFragmentToSingleCityFragment3(weatherCity)
+        findNavController().navigate(action)
+    }
+
+    override fun onLongClick(weatherCity: WeatherCity) {
+        val action = MainCityListFragmentDirections.actionMainCityListFragmentToDeleteCityDialog(weatherCity)
         findNavController().navigate(action)
     }
 

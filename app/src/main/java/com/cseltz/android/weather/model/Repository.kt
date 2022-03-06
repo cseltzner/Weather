@@ -17,6 +17,7 @@ class Repository(
     fun getAllStoredCitiesAsLiveData() = storedCityDao.getAllStoredCitiesAsLiveData()
     suspend fun getAllStoredCitiesAsList() = storedCityDao.getAllStoredCitiesAsList()
     suspend fun deleteAllStoredCities() = storedCityDao.deleteAll()
+    suspend fun deleteStoredCityById(cityId: Int) = storedCityDao.deleteById(cityId)
 
     // Api calls
     fun getCoordinatesByLocationName(locationString: String) = openWeatherApi.getCoordinatesByLocationName(locationString)

@@ -44,6 +44,10 @@ class MainCityListFragmentAdapter(
                     listItemTemp.text = weatherCity.getCurrentFormattedTemperature()
                     listItemDescription.text = weatherCity.weatherParameters.current.weather[0].description.replaceFirstChar { char -> char.uppercase() }
                     root.setOnClickListener { listener.onClick(weatherCity) }
+                    root.setOnLongClickListener {
+                        listener.onLongClick(weatherCity)
+                        true
+                    }
                 }
             }
         }
@@ -51,5 +55,6 @@ class MainCityListFragmentAdapter(
 
     interface OnItemClickListeners {
         fun onClick(weatherCity: WeatherCity)
+        fun onLongClick(weatherCity: WeatherCity)
     }
 }

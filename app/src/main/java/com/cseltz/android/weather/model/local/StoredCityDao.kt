@@ -27,4 +27,7 @@ interface StoredCityDao {
 
     @Query("DELETE FROM stored_cities")
     suspend fun deleteAll()
+
+    @Query("DELETE FROM stored_cities WHERE id = :cityId")
+    suspend fun deleteById(cityId: Int)
 }

@@ -13,4 +13,9 @@
     <string name="delete_all_dialog_message">Are you sure you want to delete all currently stored cities?</string>
     <string name="delete_all_dialog_cancel">Cancel</string>
     <string name="delete_all_dialog_confirm">Delete All</string>
+    <string name="delete_city_dialog_title">Confirm Deletion</string>
+    <string name="delete_city_dialog_message">Are you sure you want to delete this city?</string>
+    <string name="delete_city_dialog_cancel">Cancel</string>
+    <string name="delete_city_dialog_confirm">Delete</string>
+
 </resources>
