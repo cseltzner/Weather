@@ -9,6 +9,7 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/current_weather_group"
         android:layout_width="match_parent"
+        android:padding="8dp"
         android:layout_height="0dp"
         android:layout_weight="1">
 
@@ -49,7 +50,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@id/guideline_vertical"
             app:layout_constraintTop_toTopOf="parent"
-            tools:src="@drawable/sunny" />
+            tools:src="@mipmap/sunny" />
 
         <TextView
             android:id="@+id/temp_textview"
@@ -107,15 +108,23 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="@id/guideline_vertical"
             app:layout_constraintTop_toTopOf="@id/feels_like_textview"
-            tools:src="@drawable/breeze" />
+            tools:src="@mipmap/breeze" />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/daily_recyclerview"
+    <com.cseltz.android.weather.util.NestedScrollableHost
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="1" />
+        android:layout_weight="1">
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/daily_recyclerview"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="12dp"
+            android:layout_gravity="center_vertical"
+            android:scrollbars="horizontal" />
+    </com.cseltz.android.weather.util.NestedScrollableHost>
 
 </LinearLayout>

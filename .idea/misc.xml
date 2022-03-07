@@ -7,9 +7,10 @@
         <entry key="..\:/Users/CS/AndroidStudioProjects/Weather/app/src/main/res/drawable/ic_warning.xml" value="0.37083333333333335" />
         <entry key="..\:/Users/CS/AndroidStudioProjects/Weather/app/src/main/res/drawable/rounded.xml" value="0.37083333333333335" />
         <entry key="..\:/Users/CS/AndroidStudioProjects/Weather/app/src/main/res/layout/activity_main.xml" value="0.1" />
+        <entry key="..\:/Users/CS/AndroidStudioProjects/Weather/app/src/main/res/layout/daily_forecast_list_item.xml" value="0.3546875" />
         <entry key="..\:/Users/CS/AndroidStudioProjects/Weather/app/src/main/res/layout/fragment_about.xml" value="0.3546875" />
         <entry key="..\:/Users/CS/AndroidStudioProjects/Weather/app/src/main/res/layout/fragment_add_city.xml" value="0.22" />
-        <entry key="..\:/Users/CS/AndroidStudioProjects/Weather/app/src/main/res/layout/fragment_current_weather.xml" value="0.3546875" />
+        <entry key="..\:/Users/CS/AndroidStudioProjects/Weather/app/src/main/res/layout/fragment_current_weather.xml" value="0.33" />
         <entry key="..\:/Users/CS/AndroidStudioProjects/Weather/app/src/main/res/layout/fragment_delete_all_dialog.xml" value="0.259963768115942" />
         <entry key="..\:/Users/CS/AndroidStudioProjects/Weather/app/src/main/res/layout/fragment_delete_city_dialog.xml" value="0.3546875" />
         <entry key="..\:/Users/CS/AndroidStudioProjects/Weather/app/src/main/res/layout/fragment_hourly_weather.xml" value="0.3546875" />

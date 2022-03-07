@@ -6,6 +6,8 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.core.os.bundleOf
 import androidx.fragment.app.Fragment
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.cseltz.android.weather.databinding.FragmentCurrentWeatherBinding
 import com.cseltz.android.weather.ui.singlecity.CURRENT_WEATHER_KEY
 import com.cseltz.android.weather.ui.singlecity.SingleCityAdapter
@@ -35,6 +37,14 @@ class CurrentWeatherFragment: Fragment() {
             feelsLikeTextview.text = weatherCity.getCurrentFormattedFeelsLikeTemp()
             windTextview.text = weatherCity.getCurrentFormattedWindString()
             windIcon.setImageResource(weatherCity.getCurrentWindIcon())
+        }
+
+        // RecyclerView
+        val rvAdapter = CurrentWeatherFragmentAdapter(weatherCity)
+        binding.dailyRecyclerview.apply {
+            adapter = rvAdapter
+            setHasFixedSize(true)
+            layoutManager = LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
         }
 
         return binding.root
