@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.cseltz.android.weather.databinding.FragmentHourlyWeatherBinding
 import com.cseltz.android.weather.ui.singlecity.HOURLY_WEATHER_KEY
 import com.cseltz.android.weather.ui.uidataclasses.WeatherCity
@@ -22,6 +23,13 @@ class HourlyWeatherFragment: Fragment() {
         binding = FragmentHourlyWeatherBinding.inflate(inflater)
 
         weatherCity = arguments?.getParcelable(HOURLY_WEATHER_KEY)!!
+
+        val rvAdapter = HourlyWeatherAdapter(weatherCity)
+        binding.hourlyRecyclerview.apply {
+            adapter = rvAdapter
+            setHasFixedSize(true)
+            layoutManager = LinearLayoutManager(requireContext())
+        }
 
         return binding.root
     }
