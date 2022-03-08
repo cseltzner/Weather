@@ -50,7 +50,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@id/guideline_vertical"
             app:layout_constraintTop_toTopOf="parent"
-            tools:src="@mipmap/sunny" />
+            tools:src="@drawable/sunny" />
 
         <TextView
             android:id="@+id/temp_textview"
@@ -108,7 +108,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="@id/guideline_vertical"
             app:layout_constraintTop_toTopOf="@id/feels_like_textview"
-            tools:src="@mipmap/breeze" />
+            tools:src="@drawable/breeze" />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>

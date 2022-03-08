@@ -32,7 +32,7 @@
             android:layout_height="80dp"
             android:layout_weight="1"
             android:contentDescription="@string/weather_icon"
-            tools:src="@mipmap/sunny" />
+            tools:src="@drawable/sunny" />
 
         <TextView
             android:id="@+id/hourly_temp_text"
@@ -70,7 +70,7 @@
                 android:layout_height="40dp"
                 android:layout_gravity="center"
                 android:contentDescription="@string/pop_icon"
-                android:src="@mipmap/prob_precip" />
+                android:src="@drawable/prob_precip" />
 
             <TextView
                 android:id="@+id/hourly_pop_textview"

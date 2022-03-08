@@ -47,7 +47,7 @@
             app:layout_constraintEnd_toStartOf="@id/list_item_description"
             app:layout_constraintHorizontal_weight="2"
             app:layout_constraintStart_toEndOf="@id/list_item_temp"
-            tools:src="@mipmap/sunny" />
+            tools:src="@drawable/sunny" />
 
 
         <TextView

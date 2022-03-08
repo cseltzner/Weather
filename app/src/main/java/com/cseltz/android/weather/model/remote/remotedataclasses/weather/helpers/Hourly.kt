@@ -29,25 +29,25 @@ data class Hourly(
 
     fun getWeatherIcon(): Int {
         return when (weather[0].icon) {
-            "01d" -> R.mipmap.sunny
-            "01n" -> R.mipmap.clear_night
-            "02d" -> R.mipmap.partly_cloudy
-            "02n" -> R.mipmap.partly_cloudy_night
-            "03d" -> R.mipmap.cloudy
-            "03n" -> R.mipmap.cloudy
-            "04d" -> R.mipmap.cloudy
-            "04n" -> R.mipmap.cloudy
-            "09d" -> R.mipmap.rainy
-            "09n" -> R.mipmap.rainy
-            "10d" -> R.mipmap.rainy
-            "10n" -> R.mipmap.rainy
-            "11d" -> R.mipmap.thunderstorm
-            "11n" -> R.mipmap.thunderstorm
-            "13d" -> R.mipmap.snow
-            "13n" -> R.mipmap.snow
-            "50d" -> R.mipmap.fog
-            "50n" -> R.mipmap.fog
-            else -> R.mipmap.cloudy
+            "01d" -> R.drawable.sunny
+            "01n" -> R.drawable.clear_night
+            "02d" -> R.drawable.partly_cloudy
+            "02n" -> R.drawable.partly_cloudy_night
+            "03d" -> R.drawable.cloudy
+            "03n" -> R.drawable.cloudy
+            "04d" -> R.drawable.cloudy
+            "04n" -> R.drawable.cloudy
+            "09d" -> R.drawable.rainy
+            "09n" -> R.drawable.rainy
+            "10d" -> R.drawable.rainy
+            "10n" -> R.drawable.rainy
+            "11d" -> R.drawable.thunderstorm
+            "11n" -> R.drawable.thunderstorm
+            "13d" -> R.drawable.snow
+            "13n" -> R.drawable.snow
+            "50d" -> R.drawable.fog
+            "50n" -> R.drawable.fog
+            else -> R.drawable.cloudy
         }
     }
 
