@@ -46,6 +46,7 @@
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:contentDescription="@string/weather_icon"
+            android:layout_marginStart="24dp"
             app:layout_constraintBottom_toTopOf="@id/guideline_horizontal"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@id/guideline_vertical"
@@ -106,7 +107,7 @@
             android:contentDescription="@string/wind_icon"
             app:layout_constraintBottom_toBottomOf="@id/wind_textview"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="@id/guideline_vertical"
+            app:layout_constraintStart_toStartOf="@id/weather_icon"
             app:layout_constraintTop_toTopOf="@id/feels_like_textview"
             tools:src="@drawable/breeze" />
 

@@ -86,9 +86,9 @@ data class WeatherCity(
         val windSpeed = weatherParameters.current.wind_speed
         return if (windSpeed >= 0 && windSpeed < 4) {
             WindClassifiers.LightBreeze
-        } else if (windSpeed >= 4 && windSpeed < 13) {
+        } else if (windSpeed >= 4 && windSpeed < 10) {
             WindClassifiers.Breeze
-        } else if (windSpeed >= 13 && windSpeed < 30) {
+        } else if (windSpeed >= 10 && windSpeed < 24) {
             WindClassifiers.Wind
         }
         else {
@@ -97,7 +97,7 @@ data class WeatherCity(
     }
 
     private sealed class WindClassifiers(val str: String, val imgResource: Int) {
-        object LightBreeze: WindClassifiers("light breeze", R.drawable.no_wind)
+        object LightBreeze: WindClassifiers("light breeze", R.mipmap.no_wind)
         object Breeze: WindClassifiers("breeze", R.drawable.light_breeze)
         object Wind: WindClassifiers("wind", R.drawable.breeze)
         object StrongWind: WindClassifiers("strong wind", R.drawable.strong_wind)
