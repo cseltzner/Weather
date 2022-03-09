@@ -26,6 +26,9 @@
         <meta-data
             android:name="openWeatherApiKey"
             android:value="${OPEN_WEATHER_API_KEY}"/>
+        <meta-data
+            android:name="preloaded_fonts"
+            android:resource="@array/preloaded_fonts" />
     </application>
 
 </manifest>

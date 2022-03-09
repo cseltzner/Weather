@@ -18,5 +18,9 @@
     <string name="delete_city_dialog_cancel">Cancel</string>
     <string name="delete_city_dialog_confirm">Delete</string>
     <string name="pop_icon">Probability of precipitation icon</string>
+    <string name="feels_like">Feels like</string>
+    <string name="wind_header">Wind</string>
+    <string name="humidity_header">Humidity</string>
+    <string name="pop_header">Chance of rain/snow</string>
 
 </resources>

@@ -46,7 +46,7 @@ data class WeatherCity(
     fun getCurrentFormattedFeelsLikeTemp(): String {
         val temp = weatherParameters.current.feels_like
         val formattedTemp = temp.toInt()
-        return "Feels like ${formattedTemp}\u2109"
+        return "${formattedTemp}\u2109"
     }
 
     fun getCurrentFormattedWindString(): String {
@@ -75,31 +75,7 @@ data class WeatherCity(
                 ""
             }
 
-        return "${windSpeed.toInt()} MPH ${getCurrentWindClassifier().str} $windDir"
+        return "${windSpeed.toInt()} MPH $windDir"
     }
 
-    fun getCurrentWindIcon(): Int {
-        return getCurrentWindClassifier().imgResource
-    }
-
-    private fun getCurrentWindClassifier(): WindClassifiers {
-        val windSpeed = weatherParameters.current.wind_speed
-        return if (windSpeed >= 0 && windSpeed < 4) {
-            WindClassifiers.LightBreeze
-        } else if (windSpeed >= 4 && windSpeed < 10) {
-            WindClassifiers.Breeze
-        } else if (windSpeed >= 10 && windSpeed < 24) {
-            WindClassifiers.Wind
-        }
-        else {
-            WindClassifiers.StrongWind
-        }
-    }
-
-    private sealed class WindClassifiers(val str: String, val imgResource: Int) {
-        object LightBreeze: WindClassifiers("light breeze", R.mipmap.no_wind)
-        object Breeze: WindClassifiers("breeze", R.drawable.light_breeze)
-        object Wind: WindClassifiers("wind", R.drawable.breeze)
-        object StrongWind: WindClassifiers("strong wind", R.drawable.strong_wind)
-    }
 }
