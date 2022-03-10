@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
+    android:layout_width="100dp"
+    android:layout_height="200dp"
     android:orientation="vertical"
     android:padding="4dp">
 
@@ -11,15 +11,14 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
-        android:textColor="@color/black"
         android:textSize="24sp"
-        android:textStyle="bold"
+        android:fontFamily="@font/roboto"
         tools:text="Fri 12" />
 
     <ImageView
         android:id="@+id/daily_forecast_icon"
-        android:layout_width="90dp"
-        android:layout_height="90dp"
+        android:layout_width="45dp"
+        android:layout_height="45dp"
         android:layout_gravity="center_horizontal"
         android:contentDescription="@string/weather_icon"
         tools:src="@drawable/sunny" />
@@ -29,10 +28,10 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
-        android:textColor="@color/black"
+        android:layout_marginTop="8dp"
         android:textSize="24sp"
-        android:textStyle="bold"
-        tools:text="85&#176;" />
+        android:fontFamily="@font/roboto"
+        tools:text="85&#176;\n85" />
 
     <LinearLayout
         android:layout_width="wrap_content"
@@ -45,16 +44,16 @@
             android:id="@+id/daily_forecast_pop_icon"
             android:layout_width="30dp"
             android:layout_height="30dp"
-            android:src="@drawable/prob_precip" />
+            android:contentDescription="@string/probability_of_precipitation_icon"
+            android:src="@drawable/pop" />
 
         <TextView
             android:id="@+id/daily_forecast_pop"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="6dp"
-            android:textColor="@color/black"
             android:textSize="20sp"
-            android:textStyle="bold"
+            android:fontFamily="@font/roboto"
             tools:text="22%" />
 
     </LinearLayout>

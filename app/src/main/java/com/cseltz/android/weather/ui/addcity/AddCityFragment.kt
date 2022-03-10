@@ -76,6 +76,12 @@ class AddCityFragment: Fragment(), AdapterView.OnItemSelectedListener {
             false
         }
 
+        binding.cityEdittext.setOnFocusChangeListener { view, hasFocus ->
+            if (!hasFocus) {
+                hideKeyboard(view)
+            }
+        }
+
         binding.doneFab.setOnClickListener {
             if (viewModel.validateCity(viewModel.cityEditTextValue, viewModel.currentStateSpinnerPosition)) {
                 val state = StateIdToStateCodeConverter.convertStateSpinnerPositionToStateCode(viewModel.currentStateSpinnerPosition)
@@ -116,5 +122,10 @@ class AddCityFragment: Fragment(), AdapterView.OnItemSelectedListener {
 
     override fun onNothingSelected(p0: AdapterView<*>?) {
         // nothing
+    }
+
+    private fun hideKeyboard(view: View) {
+        val inputMethodManager: InputMethodManager = requireActivity().getSystemService(Activity.INPUT_METHOD_SERVICE) as InputMethodManager
+        inputMethodManager.hideSoftInputFromWindow(view.windowToken, 0)
     }
 }

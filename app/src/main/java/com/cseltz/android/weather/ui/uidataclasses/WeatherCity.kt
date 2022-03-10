@@ -40,13 +40,13 @@ data class WeatherCity(
     fun getCurrentFormattedTemperature(): String {
         val temp = weatherParameters.current.temp
         val formattedTemp = temp.toInt()
-        return "${formattedTemp}\u2109"
+        return "${formattedTemp}\u00B0"
     }
 
     fun getCurrentFormattedFeelsLikeTemp(): String {
         val temp = weatherParameters.current.feels_like
         val formattedTemp = temp.toInt()
-        return "${formattedTemp}\u2109"
+        return "${formattedTemp}\u00B0"
     }
 
     fun getCurrentFormattedWindString(): String {
@@ -76,6 +76,16 @@ data class WeatherCity(
             }
 
         return "${windSpeed.toInt()} MPH $windDir"
+    }
+
+    fun getFormattedPop(): String {
+        val pop = (weatherParameters.daily[0].pop * 100).toInt().toString()
+        return "$pop%"
+    }
+
+    fun getFormattedHumidity(): String {
+        val humidity = weatherParameters.current.humidity
+        return "$humidity%"
     }
 
 }

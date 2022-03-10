@@ -52,7 +52,7 @@ data class Hourly(
     }
 
     fun getFormattedTemp(): String {
-        return "${temp.toInt()}\u2109"
+        return "${temp.toInt()}\u00B0"
     }
 
     fun getFormattedWind(): String {

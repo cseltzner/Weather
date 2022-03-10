@@ -4,10 +4,15 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:layout_margin="4dp"
-    android:padding="12dp"
-    app:cardCornerRadius="4dp">
+    android:layout_height="90dp"
+    android:layout_marginStart="12dp"
+    android:layout_marginTop="8dp"
+    android:layout_marginEnd="12dp"
+    android:layout_marginBottom="8dp"
+    app:cardCornerRadius="8dp"
+    app:cardElevation="4dp"
+    app:cardBackgroundColor="?attr/colorSurface"
+    app:contentPadding="8dp">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -20,16 +25,15 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
+            android:fontFamily="@font/roboto"
             android:textAlignment="center"
-            android:textColor="@color/black"
-            android:textSize="16sp"
-            android:textStyle="bold"
-            tools:text="11:00AM" />
+            android:textSize="18sp"
+            tools:text="Wed\n4 PM" />
 
         <ImageView
             android:id="@+id/hourly_weather_icon"
-            android:layout_width="80dp"
-            android:layout_height="80dp"
+            android:layout_width="45dp"
+            android:layout_height="45dp"
             android:layout_weight="1"
             android:contentDescription="@string/weather_icon"
             tools:src="@drawable/sunny" />
@@ -40,10 +44,9 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:layout_weight="1"
+            android:fontFamily="@font/roboto"
             android:textAlignment="center"
-            android:textColor="@color/black"
             android:textSize="24sp"
-            android:textStyle="bold"
             tools:text="38 F" />
 
         <TextView
@@ -52,10 +55,9 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:layout_weight="1"
+            android:fontFamily="@font/roboto"
             android:textAlignment="center"
-            android:textColor="@color/black"
             android:textSize="16sp"
-            android:textStyle="bold"
             tools:text="21 mph\nwind\neast" />
 
         <LinearLayout
@@ -70,7 +72,8 @@
                 android:layout_height="40dp"
                 android:layout_gravity="center"
                 android:contentDescription="@string/pop_icon"
-                android:src="@drawable/prob_precip" />
+                android:src="@drawable/pop"
+                app:tint="@color/icon_gray" />
 
             <TextView
                 android:id="@+id/hourly_pop_textview"
@@ -78,8 +81,8 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:layout_marginTop="8dp"
+                android:fontFamily="@font/roboto"
                 android:textAlignment="center"
-                android:textColor="@color/black"
                 android:textSize="18sp"
                 android:textStyle="bold"
                 tools:text="26%" />

@@ -68,7 +68,7 @@ data class Daily(
     fun getFormattedTemp(): String {
         val highTemp = temp.max.toInt()
         val lowTemp = temp.min.toInt()
-        return "${highTemp}\u2109\n${lowTemp}\u2109"
+        return "${highTemp}\u00B0\n${lowTemp}\u00B0"
 
     }
 

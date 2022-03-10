@@ -8,9 +8,10 @@
 
     <com.google.android.material.tabs.TabLayout
         android:id="@+id/tab_layout"
+        style="@style/weather_tab_layout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:padding="12dp"/>
+        android:padding="12dp" />
 
     <androidx.viewpager2.widget.ViewPager2
         android:id="@+id/view_pager"

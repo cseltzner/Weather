@@ -22,5 +22,6 @@
     <string name="wind_header">Wind</string>
     <string name="humidity_header">Humidity</string>
     <string name="pop_header">Chance of rain/snow</string>
+    <string name="probability_of_precipitation_icon">Probability of precipitation icon</string>
 
 </resources>

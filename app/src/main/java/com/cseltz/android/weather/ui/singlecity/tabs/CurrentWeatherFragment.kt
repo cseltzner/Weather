@@ -30,13 +30,14 @@ class CurrentWeatherFragment: Fragment() {
         weatherCity = arguments?.getParcelable(CURRENT_WEATHER_KEY)!!
 
         binding.apply {
-            timeTextview.text = getFormattedTime()
             weatherIcon.setImageResource(weatherCity.getCurrentWeatherIcon())
             tempTextview.text = weatherCity.getCurrentFormattedTemperature()
             descriptionTextview.text = weatherCity.weatherParameters.current.weather[0].description.replaceFirstChar { char -> char.uppercase() }
             feelsLikeTextview.text = weatherCity.getCurrentFormattedFeelsLikeTemp()
             windTextview.text = weatherCity.getCurrentFormattedWindString()
-            windIcon.setImageResource(weatherCity.getCurrentWindIcon())
+            cityTextview.text = weatherCity.city
+            popTextview.text = weatherCity.getFormattedPop()
+            humidityTextview.text = weatherCity.getFormattedHumidity()
         }
 
         // RecyclerView
@@ -50,8 +51,4 @@ class CurrentWeatherFragment: Fragment() {
         return binding.root
     }
 
-    private fun getFormattedTime(): String {
-        val formatter = SimpleDateFormat("hh:mm aa", Locale.US)
-        return formatter.format(Date())
-    }
 }

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="weather_tab_layout" parent="Widget.MaterialComponents.TabLayout">
+        <item name="tabIndicatorColor">?attr/colorPrimaryVariant</item>
+        <item name="tabTextColor">?attr/colorPrimaryVariant</item>
+        <item name="tabIconTint">?attr/colorPrimaryVariant</item>
+    </style>
+
+    <style name="weather_text_input_layout" parent="Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+        <item name="placeholderTextColor">?attr/colorOnPrimary</item>
+        <item name="prefixTextColor">?attr/colorOnPrimary</item>
+        <item name="suffixTextColor">?attr/colorOnPrimary</item>
+    </style>
+</resources>
