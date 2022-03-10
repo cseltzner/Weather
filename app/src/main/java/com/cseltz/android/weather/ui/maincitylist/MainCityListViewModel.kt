@@ -125,7 +125,12 @@ class MainCityListViewModel @Inject constructor(
                                 val weatherObject = response.body()!!
                                 val weatherCity = WeatherCity(
                                     id = city.id,
-                                    city = city.city,
+                                    city = when (city.city) {
+                                        "Gold Canyon RV & Golf Resort" -> {
+                                            "Gold Canyon" // Yes this is hacky but I plan on adding a rename feature later, and want the app to look good for now TODO add rename feature
+                                        }
+                                        else -> city.city
+                                    },
                                     state = city.state,
                                     weatherParameters = weatherObject
                                 )
@@ -167,6 +172,7 @@ class MainCityListViewModel @Inject constructor(
 
         }
     }
+
     private fun getFormattedTime(): String {
         val formatter = SimpleDateFormat("EEE, MMM d hh:mm aaa", Locale.US)
         return formatter.format(Date())
