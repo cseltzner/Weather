@@ -14,14 +14,15 @@
         app:showAsAction="never" />
 
     <item
-        android:id="@+id/menu_main_about"
-        android:title="@string/about"
-        app:showAsAction="never" />
-
-    <item
         android:id="@+id/menu_dark_mode"
         android:title="@string/dark_mode"
         app:showAsAction="never"
         android:checkable="true" />
+
+    <item
+        android:id="@+id/menu_main_about"
+        android:title="@string/about"
+        app:showAsAction="never" />
+
 
 </menu>
