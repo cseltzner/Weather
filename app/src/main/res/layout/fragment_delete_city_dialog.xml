@@ -5,17 +5,18 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    android:minWidth="370dp"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_margin="16dp"
-    app:cardBackgroundColor="#E4FAFAFA"
+    android:layout_margin="2dp"
+    app:cardBackgroundColor="?attr/colorBackgroundFloating"
     app:cardCornerRadius="8dp"
     app:cardElevation="2dp"
+    app:contentPadding="20dp"
     tools:context=".ui.maincitylist.DeleteAllDialog">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:padding="12dp">
+        android:layout_height="match_parent">
 
         <ImageView
             android:id="@+id/delete_city_warning_icon"
@@ -34,7 +35,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="32dp"
             android:text="@string/delete_city_dialog_title"
-            android:textColor="#E60707"
+            android:textColor="?attr/errorTextColor"
             android:textSize="20sp"
             app:layout_constraintBottom_toBottomOf="@id/delete_city_warning_icon"
             app:layout_constraintStart_toEndOf="@id/delete_city_warning_icon"
@@ -57,7 +58,7 @@
             android:layout_marginTop="16dp"
             android:padding="16dp"
             android:text="@string/delete_city_dialog_message"
-            android:textColor="@color/black"
+            android:textColor="?attr/colorOnBackground"
             android:textSize="16sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -71,7 +72,7 @@
             android:focusable="true"
             android:padding="16dp"
             android:text="@string/delete_city_dialog_cancel"
-            android:textColor="@color/black"
+            android:textColor="?attr/colorOnBackground"
             android:textSize="16sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@id/delete_city_message" />
@@ -84,7 +85,7 @@
             android:focusable="true"
             android:padding="16dp"
             android:text="@string/delete_city_dialog_confirm"
-            android:textColor="#E60707"
+            android:textColor="?attr/errorTextColor"
             android:textSize="16sp"
             app:layout_constraintEnd_toStartOf="@id/delete_city_cancel"
             app:layout_constraintTop_toTopOf="@id/delete_city_cancel" />

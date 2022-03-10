@@ -24,4 +24,7 @@
 
     <color name="surface_day">#FFFFFF</color>
     <color name="surface_night">#1e1e1e</color>
+
+    <color name="danger_red">#E60707</color>
+    <color name="danger_red_night">#CF6679</color>
 </resources>
