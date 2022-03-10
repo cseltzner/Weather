@@ -12,6 +12,7 @@
         android:layout_height="wrap_content"
         android:elevation="8dp"
         android:visibility="gone"
+        android:indeterminateTint="?attr/colorSecondary"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
