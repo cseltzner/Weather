@@ -7,4 +7,10 @@
         android:title="@string/about"
         app:showAsAction="never" />
 
+    <item
+        android:id="@+id/menu_dark_mode"
+        android:title="@string/dark_mode"
+        android:checkable="true"
+        app:showAsAction="never"/>
+
 </menu>

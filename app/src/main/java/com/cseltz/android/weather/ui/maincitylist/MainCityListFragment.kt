@@ -1,8 +1,10 @@
 package com.cseltz.android.weather.ui.maincitylist
 
+import android.content.Context
 import android.os.Bundle
 import android.util.Log
 import android.view.*
+import androidx.appcompat.app.AppCompatDelegate
 import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
@@ -10,6 +12,7 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import com.cseltz.android.weather.NavGraphDirections
+import com.cseltz.android.weather.PREF_KEY_DARK_MODE
 import com.cseltz.android.weather.R
 import com.cseltz.android.weather.databinding.FragmentMainCityListBinding
 import com.cseltz.android.weather.ui.uidataclasses.WeatherCity
@@ -25,6 +28,7 @@ class MainCityListFragment: Fragment(), MainCityListFragmentAdapter.OnItemClickL
     private lateinit var binding: FragmentMainCityListBinding
     private val viewModel: MainCityListViewModel by activityViewModels()
     private lateinit var adapter: MainCityListFragmentAdapter
+    private var isDarkModeChecked = false
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -35,6 +39,15 @@ class MainCityListFragment: Fragment(), MainCityListFragmentAdapter.OnItemClickL
         adapter = MainCityListFragmentAdapter(listOf(), this)
         binding.mainRecyclerView.adapter = adapter
         binding.mainRecyclerView.setHasFixedSize(true)
+
+        isDarkModeChecked = activity?.getPreferences(Context.MODE_PRIVATE)
+            ?.getBoolean(PREF_KEY_DARK_MODE, false) ?: false
+
+        if (isDarkModeChecked) {
+            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
+        } else {
+            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
+        }
 
         binding.mainTimeLastUpdatedTextview.text = when(viewModel.lastUpdatedTime) {
             "" -> ""
@@ -100,6 +113,7 @@ class MainCityListFragment: Fragment(), MainCityListFragmentAdapter.OnItemClickL
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
         menu.clear()
         inflater.inflate(R.menu.menu_main_city_list, menu)
+        menu.findItem(R.id.menu_dark_mode).isChecked = isDarkModeChecked
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
@@ -116,6 +130,20 @@ class MainCityListFragment: Fragment(), MainCityListFragmentAdapter.OnItemClickL
                 viewModel.performEvent(MainCityListEvents.OnRefreshClicked { list ->
                     adapter.submitList(list)
                 })
+                true
+            }
+            R.id.menu_dark_mode -> {
+                item.setChecked(!item.isChecked)
+                activity?.getPreferences(Context.MODE_PRIVATE)
+                    ?.edit()
+                    ?.putBoolean(PREF_KEY_DARK_MODE, item.isChecked)
+                    ?.apply()
+
+                if (item.isChecked) {
+                    AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
+                } else {
+                    AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
+                }
                 true
             }
 
