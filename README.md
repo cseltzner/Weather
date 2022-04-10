@@ -11,3 +11,20 @@ Icons designed by Freepik from Flaticon and edited by myself in Inkscape
 I hope your weather checking is an enjoyable experience :)
 
 - cseltz
+
+<img src="Screenshots/Main.jpg">
+<h2>Main weather list</h2>
+<img src="Screenshots/Main_night.jpg">
+<h2>Night mode</h2>
+<img src="Screenshots/Main_Empty.jpg">
+<h2>Initial app startup</h2>
+<img src="Screenshots/Current_forecast.jpg">
+<h2>Current weather and forecast</h2>
+<img src="Screenshots/Current_forecast_night.jpg">
+<h2>Night mode</h2>
+<img src="Screenshots/Hourly_forecast.jpg">
+<h2>Hourly forecast</h2>
+<img src="Screenshots/Hourly_forecast_night.jpg">
+<h2>Night mode</h2>
+<img src="Screenshots/Delete.jpg">
+<h2>Custom delete dialog</h2>
