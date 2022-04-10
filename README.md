@@ -11,20 +11,26 @@ Icons designed by Freepik from Flaticon and edited by myself in Inkscape
 I hope your weather checking is an enjoyable experience :)
 
 - cseltz
-
-<img src="Screenshots/Main.jpg" height="750px">
 <h2>Main weather list</h2>
+<img src="Screenshots/Main.jpg" height="750px">
+
+<h2>Night mode</h2>
 <img src="Screenshots/Main_night.jpg" height="750px">
-<h2>Night mode</h2>
-<img src="Screenshots/Main_Empty.jpg" height="750px">
+
 <h2>Initial app startup</h2>
-<img src="Screenshots/Current_forecast.jpg" height="750px">
+<img src="Screenshots/Main_Empty.jpg" height="750px">
+
 <h2>Current weather and forecast</h2>
+<img src="Screenshots/Current_forecast.jpg" height="750px">
+
+<h2>Night mode</h2>
 <img src="Screenshots/Current_forecast_night.jpg" height="750px">
-<h2>Night mode</h2>
-<img src="Screenshots/Hourly_forecast.jpg" height="750px">
+
 <h2>Hourly forecast</h2>
-<img src="Screenshots/Hourly_forecast_night.jpg" height="750px">
+<img src="Screenshots/Hourly_forecast.jpg" height="750px">
+
 <h2>Night mode</h2>
-<img src="Screenshots/Delete.jpg" height="750px">
+<img src="Screenshots/Hourly_forecast_night.jpg" height="750px">
+
 <h2>Custom delete dialog</h2>
+<img src="Screenshots/Delete.jpg" height="750px">
